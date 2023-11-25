@@ -19,11 +19,11 @@ const posts = [
       {
         type: 'paragraph',
         content:
-          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
+          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no primeiro modulo do Ignite, curso da Rocketseat. O nome do projeto é G-feed 🚀'
       },
-      { type: 'link', content: 'jane.design/doctorcare' }
+      { type: 'link', content: 'github.com/g-feed' }
     ],
-    publishedAt: new Date('2023-03-12 20:00:00')
+    publishedAt: new Date('2023-11-24 20:00:00')
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const posts = [
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
       },
-      { type: 'link', content: 'jane.design/doctorcare' }
+      { type: 'link', content: 'otaldohub/doctorcare' }
     ],
     publishedAt: new Date('2023-03-10 20:00:00')
   }
