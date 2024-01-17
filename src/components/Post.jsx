@@ -79,7 +79,9 @@ export function Post({ author, publishedAt, content }) {
           } else if (line.type === 'link') {
             return (
               <p key={line.content}>
-                <a href="#">{line.content}</a>
+                <a href={line.content} target="_blank">
+                  {line.title}
+                </a>
               </p>
             )
           }

@@ -21,7 +21,11 @@ const posts = [
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no primeiro modulo do Ignite, curso da Rocketseat. O nome do projeto é G-feed 🚀'
       },
-      { type: 'link', content: 'github.com/g-feed' }
+      {
+        type: 'link',
+        content: 'https://github.com/rsgabriel01/gfeed',
+        title: 'github.com/rsgabriel01/gfeed'
+      }
     ],
     publishedAt: new Date('2023-11-24 20:00:00')
   },
@@ -39,7 +43,11 @@ const posts = [
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
       },
-      { type: 'link', content: 'otaldohub/doctorcare' }
+      {
+        type: 'link',
+        content: 'https://otaldohub.com/doctorcare',
+        title: 'otaldohub.com/doctorcare'
+      }
     ],
     publishedAt: new Date('2023-03-10 20:00:00')
   }

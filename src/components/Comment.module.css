@@ -52,6 +52,10 @@
   color: var(--red-500);
 }
 
+.commentContent header button:active {
+  color: var(--red-300);
+}
+
 .commentContent p {
   margin-top: 1rem;
   color: var(--gray-300);
@@ -75,6 +79,10 @@
 
 .commentBox footer button:hover {
   color: var(--green-300);
+}
+
+.commentBox footer button:active {
+  color: var(--green-100);
 }
 
 .commentBox footer button svg {

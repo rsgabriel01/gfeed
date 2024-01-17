@@ -28,6 +28,10 @@
   color: var(--green-300);
 }
 
+.content a:active {
+  color: var(--green-100);
+}
+
 .post > header {
   display: flex;
   align-items: center;
