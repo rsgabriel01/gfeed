@@ -56,10 +56,12 @@
 }
 
 .sidebar footer a:hover {
-  background: var(--green-500);
+  border: 1px solid var(--green-300);
+  background: var(--green-300);
   color: var(--white);
 }
 
 .sidebar footer a:active {
-  background: var(--green-300);
+  border: 1px solid var(--green-100);
+  background: var(--green-100);
 }
