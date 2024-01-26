@@ -11,5 +11,8 @@
 }
 
 .header span {
-  padding-left: 0.5rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding-left: 0.15625rem;
+  color: var(--green-500);
 }
