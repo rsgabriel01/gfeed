@@ -1,6 +1,7 @@
 import { Header } from './components/Header'
 import { Post, PostType } from './components/Post'
 import { Sidebar } from './components/Sidebar'
+import { CheckCircle } from 'phosphor-react'
 
 import styles from './App.module.css'
 
@@ -70,6 +71,20 @@ const posts: PostType[] = [
 ]
 
 export function App() {
+  // setTimeout(() => {
+  //   document.getElementById('toast')!.animate([
+  //     { transform: 'translateY(0px)' },
+  //     { transform: 'translateY(-300px)' },
+  //     {
+  //       duration: 3000,
+  //       iterarion: 1
+  //     }
+  //   ])
+  // }, 3000)
+
+  setTimeout(() => {
+    document.getElementById('toast')!.style.display = 'none'
+  }, 2000)
   return (
     <div>
       <Header />
@@ -81,6 +96,14 @@ export function App() {
             return <Post key={post.id} post={post} userLoged={userLoged} />
           })}
         </main>
+      </div>
+
+      <div className={`${styles.toast} ${styles.show}`} id="toast">
+        <div>
+          <strong>Successo!</strong>
+          <p>Comentario deletado.</p>
+        </div>
+        <CheckCircle size={30} />
       </div>
     </div>
   )
