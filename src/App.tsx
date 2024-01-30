@@ -82,9 +82,9 @@ export function App() {
   //   ])
   // }, 3000)
 
-  setTimeout(() => {
-    document.getElementById('toast')!.style.display = 'none'
-  }, 2000)
+  // setTimeout(() => {
+  //   document.getElementById('toast')!.style.display = 'none'
+  // }, 2000)
   return (
     <div>
       <Header />
@@ -98,7 +98,10 @@ export function App() {
         </main>
       </div>
 
-      <div className={`${styles.toast} ${styles.show}`} id="toast">
+      <div
+        className={`${styles.toast} ${styles.show} ${styles.close}`}
+        id="toast"
+      >
         <div>
           <strong>Successo!</strong>
           <p>Comentario deletado.</p>

@@ -61,15 +61,11 @@
 }
 
 .toast.show {
-  /* background-color: red; */
   animation-name: example;
   animation-duration: 1s;
   animation-iteration-count: 1;
+}
 
-  /* transform: rotate(0.5turn); */
-  /* transform: translateY(0px, -300px);
-  duration: 3000;
-  iteration: 1; */
-
-  /* transform: translateY(-300px); */
+.toast.close {
+  display: none;
 }
