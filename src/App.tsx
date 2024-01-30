@@ -6,6 +6,20 @@ import styles from './App.module.css'
 
 import './global.css'
 
+export interface UserType {
+  id: number
+  name: string
+  avatarUrl: string
+  role: string
+}
+
+const userLoged: UserType = {
+  id: 1,
+  name: 'Gabriel Rodrigues',
+  avatarUrl: 'https://github.com/rsgabriel01.png',
+  role: 'Analista Desenvolvedor @Aliare'
+}
+
 const posts: PostType[] = [
   {
     id: 1,
@@ -19,7 +33,7 @@ const posts: PostType[] = [
       {
         type: 'paragraph',
         content:
-          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no primeiro modulo do Ignite, curso da Rocketseat. O nome do projeto é G-feed 🚀',
+          'Acabei de subir mais um projeto no meu portfolio. É um projeto que fiz no primeiro modulo do Ignite, curso da Rocketseat. O nome do projeto é G-feed 🚀',
         title: ''
       },
       {
@@ -28,7 +42,7 @@ const posts: PostType[] = [
         title: 'github.com/rsgabriel01/gfeed'
       }
     ],
-    publishedAt: new Date('2023-11-24 20:00:00')
+    publishedAt: new Date('2024-01-29 20:00:00')
   },
   {
     id: 2,
@@ -42,7 +56,7 @@ const posts: PostType[] = [
       {
         type: 'paragraph',
         content:
-          'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+          'Mais um projeto concluído, esse eu fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
         title: ''
       },
       {
@@ -51,7 +65,7 @@ const posts: PostType[] = [
         title: 'otaldohub.com/doctorcare'
       }
     ],
-    publishedAt: new Date('2023-03-10 20:00:00')
+    publishedAt: new Date('2024-01-22 20:00:00')
   }
 ]
 
@@ -64,7 +78,7 @@ export function App() {
 
         <main>
           {posts.map(post => {
-            return <Post key={post.id} post={post} />
+            return <Post key={post.id} post={post} userLoged={userLoged} />
           })}
         </main>
       </div>

@@ -19,7 +19,14 @@ export function Sidebar() {
       </div>
 
       <footer>
-        <a href="#">
+        <a
+          href="#"
+          onClick={() =>
+            alert(
+              'Desculpe essa rotina ainda não foi implementada. Em breve estará disponivel!'
+            )
+          }
+        >
           <PencilLine size={20} /> Editar perfil
         </a>
       </footer>

@@ -6,6 +6,7 @@ import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import styles from './Post.module.css'
+import { UserType } from '../App'
 
 interface Author {
   name: string
@@ -28,10 +29,32 @@ export interface PostType {
 
 interface PostProps {
   post: PostType
+  userLoged: UserType
 }
 
-export function Post({ post }: PostProps) {
-  const [comments, setComments] = useState(['Post muito bacana, hein!'])
+export interface CommentType {
+  idPost: number
+  author: UserType
+  text: string
+  publishedAt: Date
+}
+
+const commentsJson: CommentType[] = [
+  {
+    idPost: 1,
+    author: {
+      id: 2,
+      name: 'Diego Fernandes',
+      avatarUrl: 'https://github.com/diego3g.png',
+      role: 'CTO @Rocketseat'
+    },
+    text: 'Post muito bacana!',
+    publishedAt: new Date('2024-01-29 20:00:00')
+  }
+]
+
+export function Post({ post, userLoged }: PostProps) {
+  const [comments, setComments] = useState(commentsJson)
 
   const [newCommentText, setNewCommentText] = useState('')
 
@@ -51,7 +74,29 @@ export function Post({ post }: PostProps) {
   function handleCreateNewComment(event: FormEvent) {
     event.preventDefault()
 
-    setComments([...comments, newCommentText])
+    const dateNow: Date = new Date()
+
+    const dayToday: number = dateNow.getDate()
+    const monthToday: number = dateNow.getMonth() + 1
+    const yearToday: number = dateNow.getFullYear()
+    const hoursToday: number = dateNow.getHours()
+    const minutesToday: number = dateNow.getMinutes()
+    const secondsToday: number = dateNow.getSeconds()
+
+    const commentPublishedAtString: string = `${yearToday}-${monthToday}-${dayToday} ${hoursToday}:${minutesToday}:${secondsToday}`
+
+    const commentPublishedAt = new Date(commentPublishedAtString)
+
+    const newCommentObject: CommentType = {
+      idPost: post.id,
+      author: userLoged,
+      text: newCommentText,
+      publishedAt: commentPublishedAt
+    }
+
+    console.log(newCommentObject)
+
+    setComments([...comments, newCommentObject])
 
     setNewCommentText('')
   }
@@ -66,7 +111,7 @@ export function Post({ post }: PostProps) {
     event.target.setCustomValidity('Esse campo é obrigatório!')
   }
 
-  function deleteComment(commentToDelete: string) {
+  function deleteComment(commentToDelete: CommentType) {
     const commentsWithoutDeletedOne = comments.filter(comment => {
       return comment !== commentToDelete
     })
@@ -134,13 +179,15 @@ export function Post({ post }: PostProps) {
 
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return (
-            <Comment
-              key={comment}
-              content={comment}
-              onDeleteComment={deleteComment}
-            />
-          )
+          if (comment.idPost === post.id) {
+            return (
+              <Comment
+                key={comment.text}
+                comment={comment}
+                onDeleteComment={deleteComment}
+              />
+            )
+          }
         })}
       </div>
     </article>

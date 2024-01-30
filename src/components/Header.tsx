@@ -1,6 +1,6 @@
 import styles from './Header.module.css'
 
-import igniteLogo from '../../public/g-feed_logo.svg'
+import igniteLogo from '/g-feed_logo.svg'
 
 export function Header() {
   return (
