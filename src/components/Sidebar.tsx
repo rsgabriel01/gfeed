@@ -4,7 +4,11 @@ import { PencilLine } from 'phosphor-react'
 
 import styles from './Sidebar.module.css'
 
-export function Sidebar() {
+interface SidebarProps {
+  onShowToastNotification: (toastType: string, toastText: string) => void
+}
+
+export function Sidebar({ onShowToastNotification }: SidebarProps) {
   return (
     <aside className={styles.sidebar}>
       <img
@@ -22,7 +26,8 @@ export function Sidebar() {
         <a
           href="#"
           onClick={() =>
-            alert(
+            onShowToastNotification(
+              'info',
               'Desculpe essa rotina ainda não foi implementada. Em breve estará disponivel!'
             )
           }

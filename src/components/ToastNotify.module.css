@@ -1,0 +1,121 @@
+.toast {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2.5rem;
+  padding: 0.9375rem;
+  overflow: hidden;
+  background: var(--notification-default-background);
+
+  height: auto;
+  width: 18.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(56, 56, 56, 0.8);
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.toast strong {
+  color: var(--notification-default-text);
+  font-weight: bold;
+  font-sizer: 1.125rem;
+}
+
+.toast p {
+  color: var(--notification-default-text);
+  font-sizer: 0.875rem;
+}
+
+.symbol {
+  width: 1.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.symbol svg {
+  color: var(--notification-default-text);
+}
+
+.info {
+  background: var(--notification-info-background);
+}
+
+.info strong {
+  color: var(--notification-info-text);
+}
+
+.info p {
+  color: var(--notification-info-text);
+}
+
+.info svg {
+  color: var(--notification-info-text);
+}
+
+.success {
+  background: var(--notification-success-background);
+}
+
+.success strong {
+  color: var(--notification-success-text);
+}
+
+.success p {
+  color: var(--notification-success-text);
+}
+
+.success svg {
+  color: var(--notification-success-text);
+}
+
+.warning {
+  background: var(--notification-warning-background);
+}
+
+.warning strong {
+  color: var(--notification-warning-text);
+}
+
+.warning p {
+  color: var(--notification-warning-text);
+}
+
+.warning svg {
+  color: var(--notification-warning-text);
+}
+
+.danger {
+  background: var(--notification-danger-background);
+}
+
+.danger strong {
+  color: var(--notification-danger-text);
+}
+
+.danger p {
+  color: var(--notification-danger-text);
+}
+
+.danger svg {
+  color: var(--notification-danger-text);
+}
+
+@keyframes translateToastNotify {
+  0% {
+    transform: translateY(-3.75rem);
+  }
+}
+
+.show {
+  animation-name: translateToastNotify;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+.close {
+  display: none;
+}

@@ -4,17 +4,18 @@ import { Header } from './components/Header'
 import { Post, PostType } from './components/Post'
 import { Sidebar } from './components/Sidebar'
 
-import {
-  CheckCircle,
-  XCircle,
-  Warning,
-  Info,
-  BellRinging
-} from 'phosphor-react'
+// import {
+//   CheckCircle,
+//   XCircle,
+//   Warning,
+//   Info,
+//   BellRinging
+// } from 'phosphor-react'
 
 import styles from './App.module.css'
 
 import './global.css'
+import { ToastNotify } from './components/ToastNotify'
 
 export interface UserType {
   id: number
@@ -80,57 +81,29 @@ const posts: PostType[] = [
 ]
 
 export function App() {
-  const [toastNotifyTypeSuccessShow, setToastNotifyTypeSuccessShow] =
-    useState(false)
-
-  const [toastNotifyTypeDangerShow, setToastNotifyTypeDangerShow] =
-    useState(false)
-
-  const [toastNotifyTypeWarningShow, setToastNotifyTypeWaringShow] =
-    useState(false)
-
-  const [toastNotifyTypeInformationShow, setToastNotifyTypeInformationShow] =
-    useState(false)
-
-  const [toastNotifyTypeDefaultShow, setToastNotifyTypeDefaultShow] =
-    useState(false)
-
+  const [toastNotifyType, setToastNotifyType] = useState('')
   const [toastNotifyText, setToastNotifyText] = useState('')
+  const [showToastNotify, setShowToastNotify] = useState(false)
 
-  function toastNotifyShow(toastType: string, toastText: string) {
-    switch (toastType) {
-      case 'success':
-        setToastNotifyTypeSuccessShow(true)
-        break
-      case 'danger':
-        setToastNotifyTypeDangerShow(true)
-        break
-      case 'warning':
-        setToastNotifyTypeWaringShow(true)
-        break
-      case 'info':
-        setToastNotifyTypeInformationShow(true)
-        break
-      default:
-        setToastNotifyTypeDefaultShow(true)
-    }
-
+  function showToastNotification(toastType: string, toastText: string) {
+    setToastNotifyType(toastType)
     setToastNotifyText(toastText)
+    setShowToastNotify(true)
 
-    setTimeout(() => {
-      setToastNotifyTypeSuccessShow(false)
-      setToastNotifyTypeDangerShow(false)
-      setToastNotifyTypeWaringShow(false)
-      setToastNotifyTypeInformationShow(false)
-      setToastNotifyTypeDefaultShow(false)
-      setToastNotifyText('')
-    }, 3000)
+    closeToastNotification()
   }
+
+  function closeToastNotification() {
+    setTimeout(() => {
+      setShowToastNotify(false)
+    }, 5000)
+  }
+
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
-        <Sidebar />
+        <Sidebar onShowToastNotification={showToastNotification} />
 
         <main>
           {posts.map(post => {
@@ -139,77 +112,18 @@ export function App() {
                 key={post.id}
                 post={post}
                 userLoged={userLoged}
-                onToastNotify={toastNotifyShow}
+                onShowToastNotification={showToastNotification}
               />
             )
           })}
         </main>
       </div>
 
-      <div
-        className={`${styles.toast} ${
-          toastNotifyTypeDefaultShow ? styles.show : styles.close
-        }`}
-        id="toast"
-      >
-        <div>
-          <strong>Notificação!</strong>
-          <p>{toastNotifyText}</p>
-        </div>
-        <BellRinging size={30} />
-      </div>
-
-      <div
-        className={`${styles.success} ${styles.toast} ${
-          toastNotifyTypeSuccessShow ? styles.show : styles.close
-        }`}
-        id="toast"
-      >
-        <div>
-          <strong>Sucesso!</strong>
-          <p>{toastNotifyText}</p>
-        </div>
-        <CheckCircle size={30} />
-      </div>
-
-      <div
-        className={`${styles.danger} ${styles.toast} ${
-          toastNotifyTypeDangerShow ? styles.show : styles.close
-        }`}
-        id="toast"
-      >
-        <div>
-          <strong>Erro!</strong>
-          <p>{toastNotifyText}</p>
-        </div>
-        <XCircle size={30} />
-      </div>
-
-      <div
-        className={`${styles.warning} ${styles.toast} ${
-          toastNotifyTypeWarningShow ? styles.show : styles.close
-        }`}
-        id="toast"
-      >
-        <div>
-          <strong>Atenção!</strong>
-          <p>{toastNotifyText}</p>
-        </div>
-        <Warning size={30} />
-      </div>
-
-      <div
-        className={`${styles.info} ${styles.toast} ${
-          toastNotifyTypeInformationShow ? styles.show : styles.close
-        } `}
-        id="toast"
-      >
-        <div>
-          <strong>Informação!</strong>
-          <p>{toastNotifyText}</p>
-        </div>
-        <Info size={30} />
-      </div>
+      <ToastNotify
+        toastNotifyType={toastNotifyType}
+        toastNotifyText={toastNotifyText}
+        showToastNotify={showToastNotify}
+      />
     </div>
   )
 }

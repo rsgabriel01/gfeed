@@ -14,6 +14,23 @@
 
   --red-300: #f23c4b;
   --red-500: #f75a68;
+
+  --notification-default-background: #e2e3e5;
+  --notification-default-text: #383d41;
+
+  --notification-info-background: #cce5ff;
+  --notification-info-text: #004085;
+
+  --notification-success-background: #d4edda;
+  /* 9bf0bd */
+  --notification-success-text: #155724;
+  /* 467757 */
+
+  --notification-warning-background: #fff3cd;
+  --notification-warning-text: #856404;
+
+  --notification-danger-background: #f8d7da;
+  --notification-danger-text: #721c24;
 }
 
 :focus {

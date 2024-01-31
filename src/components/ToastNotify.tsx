@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { HTMLAttributes } from 'react'
 
 import styles from './ToastNotify.module.css'
 
@@ -10,41 +10,63 @@ import {
   BellRinging
 } from 'phosphor-react'
 
-interface ToastNotifyProps {
-  showToastNotifyType: string
+interface ToastNotifyProps extends HTMLAttributes<HTMLDivElement> {
+  toastNotifyType: string
   toastNotifyText: string
   showToastNotify: boolean
 }
 
 export function ToastNotify({
-  toastNotifyType,
-  toastNotifyText,
-  showToastNotify
+  toastNotifyType = 'default',
+  toastNotifyText = '',
+  showToastNotify = false,
+  ...props
 }: ToastNotifyProps) {
-  }
-  const [toastNotifyShow, setToastNotifyShow] useState(false)
   return (
     <div
-      className={`${styles.success} ${styles.toast} ${
-        showToastNotify
-          ? styles.show
-          : toastNotifyType
-          ? styles.show
-          : toastNotifyType
-          ? styles.show
-          : toastNotifyType
-          ? styles.show
-          : toastNotifyType
-          ? styles.show
-          : styles.close
-      }`}
-      id="toast"
+      className={`
+        ${
+          toastNotifyType === 'success'
+            ? styles.success
+            : toastNotifyType === 'danger'
+            ? styles.danger
+            : toastNotifyType === 'warning'
+            ? styles.warning
+            : toastNotifyType === 'info'
+            ? styles.info
+            : styles.default
+        } ${styles.toast} ${showToastNotify ? styles.show : styles.close}
+      `}
+      {...props}
     >
+      <div className="symbol">
+        {toastNotifyType === 'success' ? (
+          <CheckCircle size={30} />
+        ) : toastNotifyType === 'danger' ? (
+          <XCircle size={30} />
+        ) : toastNotifyType === 'warning' ? (
+          <Warning size={30} />
+        ) : toastNotifyType === 'info' ? (
+          <Info size={30} />
+        ) : (
+          <BellRinging size={30} />
+        )}
+      </div>
+
       <div>
-        <strong>{toastNotifyTitle}</strong>
+        <strong>
+          {toastNotifyType === 'success'
+            ? 'Sucesso!'
+            : toastNotifyType === 'danger'
+            ? 'Erro!'
+            : toastNotifyType === 'warning'
+            ? 'Atenção!'
+            : toastNotifyType === 'info'
+            ? 'Informação!'
+            : 'Notificação!'}
+        </strong>
         <p>{toastNotifyText}</p>
       </div>
-      <CheckCircle size={30} />
     </div>
   )
 }
