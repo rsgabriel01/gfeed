@@ -30,6 +30,7 @@ export interface PostType {
 interface PostProps {
   post: PostType
   userLoged: UserType
+  onToastNotify: (toastType: string, toastText: string) => void
 }
 
 export interface CommentType {
@@ -53,7 +54,7 @@ const commentsJson: CommentType[] = [
   }
 ]
 
-export function Post({ post, userLoged }: PostProps) {
+export function Post({ post, userLoged, onToastNotify }: PostProps) {
   const [comments, setComments] = useState(commentsJson)
 
   const [newCommentText, setNewCommentText] = useState('')
@@ -117,6 +118,8 @@ export function Post({ post, userLoged }: PostProps) {
     })
 
     setComments(commentsWithoutDeletedOne)
+
+    onToastNotify('success', 'Comentário deletado.')
   }
 
   const isNewCommentEmpty = newCommentText.length === 0
