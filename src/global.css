@@ -22,9 +22,7 @@
   --notification-info-text: #004085;
 
   --notification-success-background: #d4edda;
-  /* 9bf0bd */
   --notification-success-text: #155724;
-  /* 467757 */
 
   --notification-warning-background: #fff3cd;
   --notification-warning-text: #856404;
@@ -33,19 +31,22 @@
   --notification-danger-text: #721c24;
 }
 
-:focus {
-  outline: transparent;
-}
-
-textarea:focus {
-  outline: transparent;
-  box-shadow: 0 0 0 2px var(--green-500);
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--gray-900);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--green-500);
 }
 
 body {
@@ -61,4 +62,13 @@ button {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
+}
+
+:focus {
+  outline: transparent;
+}
+
+textarea:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 1.5px var(--green-500);
 }
