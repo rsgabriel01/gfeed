@@ -4,14 +4,6 @@ import { Header } from './components/Header'
 import { Post, PostType } from './components/Post'
 import { Sidebar } from './components/Sidebar'
 
-// import {
-//   CheckCircle,
-//   XCircle,
-//   Warning,
-//   Info,
-//   BellRinging
-// } from 'phosphor-react'
-
 import styles from './App.module.css'
 
 import './global.css'
